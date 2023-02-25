@@ -42,7 +42,7 @@ const PostDetail = ({ post }) => {
   };
   
   return (
-	<div className='bg-white shadow-lg rounded lg:p-8 pb-12 mb-8'>
+	<div className='bg-white bg-opacity-20 shadow-2xl rounded lg:p-8 pb-12 mb-8'>
 		<div className='relative overflow-hidden shadow-md mb-6'>
 			<img 
 				src={post.featuredImage.url} 
@@ -74,11 +74,14 @@ const PostDetail = ({ post }) => {
 			<h1 className='mb-8 text-3xl font-semibold'>
 				{post.title}
 			</h1>
-			{post.content.raw.children.map((typeObj, index) => {
-				const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
+			<div className="text-gray-300">
+				{post.content.raw.children.map((typeObj, index) => {
+					const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item));
 
-				return getContentFragment(index, children, typeObj, typeObj.type)
-			} )}
+					return getContentFragment(index, children, typeObj, typeObj.type)
+				} )}
+
+			</div>
 		</div>
 	</div>
   )
