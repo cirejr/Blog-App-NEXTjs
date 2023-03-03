@@ -1,5 +1,4 @@
 import { request, gql } from 'graphql-request';
-import { Categories } from '../components';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_PURPLEBLOG_ENDPOINT;
 
@@ -152,5 +151,48 @@ export const getComments = async (slug) => {
 	const result = await request(graphqlAPI, query, {slug})
 
 	return result.comments
+}
+
+export const getAuthors = async () => {
+	const query = gql `
+		query GetAuthors {
+			authors {
+				name
+				bio
+				photo {
+					url
+				}
+			}
+		}
+	`
+	const result = await request(graphqlAPI, query)
+	
+	return result.authors
+}
+
+export const getAuthorDetails = async (name) => {
+	const query = gql `
+			query GetAuthor( $name : String!) {
+				author ( where : { name : $name }) {
+					name 
+					bio
+					photo {
+						url
+					}
+					posts {
+						title
+						featuredImage {
+							url
+						}
+						excerpt
+						createdAt
+						slug
+					}
+				}
+			}
+		`
+	const result = await request(graphqlAPI, query, { name })
+	console.log('author : ', result.author)
+	return result.author
 }
 
