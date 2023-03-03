@@ -11,6 +11,8 @@ export const getPosts = async () => {
 					author {
 					bio
 					name
+					username
+					excerpt
 					id
 					photo {
 						url
@@ -44,6 +46,8 @@ export const getPostDetails = async (slug) => {
 				author {
 					bio
 					name
+					username
+					excerpt
 					id
 					photo {
 						url
@@ -158,6 +162,8 @@ export const getAuthors = async () => {
 		query GetAuthors {
 			authors {
 				name
+				username
+				excerpt
 				bio
 				photo {
 					url
@@ -170,12 +176,14 @@ export const getAuthors = async () => {
 	return result.authors
 }
 
-export const getAuthorDetails = async (name) => {
+export const getAuthorDetails = async (username) => {
 	const query = gql `
-			query GetAuthor( $name : String!) {
-				author ( where : { name : $name }) {
+			query GetAuthor( $username : String!) {
+				author ( where : { username : $username }) {
 					name 
 					bio
+					username
+					excerpt
 					photo {
 						url
 					}
@@ -191,7 +199,7 @@ export const getAuthorDetails = async (name) => {
 				}
 			}
 		`
-	const result = await request(graphqlAPI, query, { name })
+	const result = await request(graphqlAPI, query, { username })
 	console.log('author : ', result.author)
 	return result.author
 }

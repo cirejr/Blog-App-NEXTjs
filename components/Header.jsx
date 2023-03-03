@@ -13,7 +13,7 @@ const Header = () => {
 	}, [])
 
 return (
-	<div className='container mx-auto px-36 mb-4 sticky top-0 z-50 backdrop-filter backdrop-blur-lg'>
+	<div className='container mx-auto px-8 lg:px-36 mb-4 sticky top-0 z-50 backdrop-filter backdrop-blur-lg'>
 		<div className='w-full inline-block py-8'>
 			<div className='md:float-left block'>
 				<Link href="/">

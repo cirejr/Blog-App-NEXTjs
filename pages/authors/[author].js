@@ -8,7 +8,7 @@ const AuthorDetails = ({ author }) => {
 	return (
 		<div className="container x-auto px-10">
 			<ProfileHeader author={author} />
-			<ProfilPosts author={author}s />
+			<ProfilPosts author={author} />
 		</div>
 	)
 }
@@ -29,7 +29,7 @@ export const getStaticPaths = async () => {
   
   const authors = await getAuthors();
 
-  const paths = authors.map(author => ({ params: { author: author.name } }))
+  const paths = authors.map(author => ({ params: { author: author.username } }))
   
   return { paths, fallback: false }
 }

@@ -2,8 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 
 const ProfileHeader = ({author}) => {
-	const bannerUrl = "https://www.netlabindia.com/wp-content/uploads/2020/07/Banner-1200x200.jpg"
-	
 	return (
 		<div className="container mx-auto flex justify-center items-center">
 			<div className="relative w-full lg:w-2/3 mx-auto self-center">

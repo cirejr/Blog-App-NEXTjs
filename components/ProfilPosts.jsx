@@ -8,7 +8,7 @@ const ProfilPosts = ({ author }) => {
 	<div className="container mx-auto mt-16 shadow-xl rounded-lg">
 		<div className="flex gap-3 md:gap-12 flex-wrap items-center justify-center">
 			{ author.posts.map(post => (
-				<Link href={`/posts/${post.slug}`}>
+				<Link href={`/posts/${post.slug}`} key={post.slug}>
 					<div 
 						key={post.slug}
 						className="relative rounded-lg shadow-lg w-64 h-80 md:w-80 lg:h-96 mb-4"
@@ -18,7 +18,7 @@ const ProfilPosts = ({ author }) => {
 								backgroundRepeat: 'no-repeat',
 								backgroundSize: 'cover'}}
 					>
-						<div className="rounded-lg p-4 flex flex-col items-center justify-center backdrop-blur-sm backdrop-filter z-10 w-full h-full">
+						<div className="bg-black bg-opacity-30 rounded-lg p-4 flex flex-col items-center justify-center backdrop-blur-sm backdrop-filter z-10 w-full h-full">
 							<h4 className="text-2xl text-white font-bold mb-5"> {post.title} </h4>
 							<p className="text-white font-semibold"> {moment(post.createdAt).format('MMM DD, YYYY')} </p>
 							<div className="absolute self-start bottom-2 flex gap-3 items-center">
@@ -27,6 +27,7 @@ const ProfilPosts = ({ author }) => {
 									height="50"
 									src={author.photo.url}
 									className="rounded-full shadow-lg"
+									alt={author.username}
 								/>
 								<p className="text-white font-bold text-xl"> {author.name} </p>
 							</div>
