@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import { PostCard, PostWidget, Categories} from '../components'
 import { getPosts, graphqlAPI } from '../services'
+import { FeaturedPosts } from './sections'
 
 
 const Home = ({ posts }) => {
@@ -11,6 +12,7 @@ const Home = ({ posts }) => {
         <title>Tell Us</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+		<FeaturedPosts />
 	  <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
 		<div className='lg:col-span-8 col-span-1'>
 			{posts.map((post, index) => <PostCard key={post.node.title} post={post.node} />)}
