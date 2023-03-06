@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import Link from 'next/link';
 
 const PostDetail = ({ post }) => {
 	const getContentFragment = (index, text, obj, type) => {
@@ -52,16 +53,19 @@ const PostDetail = ({ post }) => {
 		</div>
 		<div className='px-4 lg:p-0'>
 			<div className='flex items-center mb-8 w-full'>
-				<div className='flex gap-2 items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
-					<img 
-						src={post.author.photo.url}
-						alt={post.author.name}
-						height="30px"
-						width="30px"
-						className="rounded-full align-middle"
-					/>
-					<p className='align-middle inline text-gray-700 text-lg'>{post.author.name}</p>
-				</div>
+					<Link href={`/authors/${post.author.username}`}>
+						<div className='flex gap-2 items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
+							<img 
+								src={post.author.photo.url}
+								alt={post.author.name}
+								height="30px"
+								width="30px"
+								className="rounded-full align-middle"
+							/>
+							<p className='align-middle inline text-gray-700 text-lg'>{post.author.name}</p>
+						</div>
+					</Link>
+				
 				<div className='font-medium flex w-auto flex-nowrap text-gray-700'>
 					<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6s inline mr-2 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
