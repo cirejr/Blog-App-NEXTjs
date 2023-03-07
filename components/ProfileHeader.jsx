@@ -11,6 +11,7 @@ const ProfileHeader = ({author}) => {
 				<div className="relative flex gap-3 items-center border-b-2 border-white border-opacity-20 rounded-2xl pb-16 shadow-xl ">
 					<Image 
 						src={author.photo.url}
+						alt={author.name}
 						width="150"
 						height="150"
 						className="rounded-full absolute -top-8 left-8 border-green-300 border-opacity-20 border-4"
